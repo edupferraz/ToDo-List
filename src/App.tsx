@@ -1,4 +1,7 @@
 
+import { Header } from './components/Header';
+import { InputSearch } from './components/InputSearch';
+import { Tasklist } from './components/Tasklist';
 import './global.css';
 
 function App() {
@@ -8,7 +11,7 @@ function App() {
 
       <Header />
 
-      <Input />
+      <InputSearch />
 
       <Tasklist />
     </div>
