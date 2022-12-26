@@ -1,7 +1,7 @@
 
 import { Header } from './components/Header';
 import { InputSearch } from './components/InputSearch';
-import { Tasklist } from './components/Tasklist';
+import { Tasklist } from './components/TaskList';
 import './global.css';
 
 function App() {

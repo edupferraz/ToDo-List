@@ -1,0 +1,54 @@
+.inputSearch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin: -1.5rem 22rem;
+
+}
+
+.inputGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+.inputGroup input {
+    width: 40rem;
+    height: 3.37rem;
+    padding: 1rem;
+
+
+    background: var(--gray-500);
+
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+
+    color: var(--gray-300);
+}
+
+.inputGroup input:focus {
+    border: 1px solid var(--blue-500);
+}
+
+.inputGroup button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.5rem;
+
+
+    cursor: pointer;
+    width: 6.5rem;
+
+    background: var(--blue-500);
+    color: var(--white);
+    border-radius: 8px;
+}
+
+.inputGroup button:hover {
+    filter: brightness(0.95);
+}
+
