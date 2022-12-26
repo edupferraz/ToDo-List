@@ -1,0 +1,38 @@
+.task ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.task ul li {
+    display: flex;
+    justify-content: space-between;
+    background: var(--gray-500);
+    border: 1px solid var(--gray-400);
+
+    padding: 1.2rem;
+
+    border-radius: 8px;
+
+    font-size: 0.875rem;
+    align-items: center;
+}
+
+.task ul li div {
+    display: flex;
+    gap: 2rem;
+    margin-right: 2rem;
+}
+
+.task ul li div input {
+    width: 1.5rem;
+    border: 1px solid red;
+    outline: none;
+    cursor: pointer;
+}
+
+.task ul li button {
+    cursor: pointer;
+    background: transparent;
+    color: var(--gray-300);
+    border: none;
+}
