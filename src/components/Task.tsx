@@ -1,22 +1,61 @@
 
+import { useState } from 'react';
 import { BsTrash } from 'react-icons/bs';
 
 import styles from './Task.module.css';
 
-export function Task () {
+interface TaskProps {
+    title: string;
+    onDeleteTask: (task: string) => void;
+}
+
+export function Task ({title, onDeleteTask}: TaskProps) {
+
+    const [complete, setComplete] = useState(false);
+
+    function handleCompleteTask(){
+        setComplete(!complete);
+    }
+
+    function handleDeleteTask() {
+        onDeleteTask(title);
+    }
+
 
     return(
         <section className={styles.task}>
             <ul>
-                <li>
-                    <div>
-                        <input type="checkbox" />
-                        <p>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.  Duis vel sed fames integer</p>
-                    </div>
+                {
+                    complete == false 
 
-                    <button><BsTrash size={18}/></button>
+                    ? (
+                        <li>
+                            <div>
+                                <input type="checkbox" checked={complete} onChange={handleCompleteTask}/>
+                                <p>{title}</p>
+                            </div>
 
-                </li>
+                            <button><BsTrash size={18}/></button>
+
+                        </li>
+                    )
+
+                    :
+
+                    (
+                        <li className={styles.isComplete}>
+                            <div>
+                                <input type="checkbox" checked={complete} onChange={handleCompleteTask}/>
+                                <p>{title}</p>
+                            </div>
+
+                            <button onClick={handleDeleteTask}><BsTrash size={18}/></button>
+
+                        </li>
+                    )
+                }
+
+                
             </ul>
         </section>
     )
