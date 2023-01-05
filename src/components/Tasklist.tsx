@@ -6,7 +6,6 @@ import { Task } from "./Task";
 import styles from './TaskList.module.css';
 
 export function Tasklist() {
-
     
     const [tasks, setTasks] = useState([
         'Arrumar a casa'
@@ -32,10 +31,12 @@ export function Tasklist() {
 
     function deleteTask(taskToDelete: string) {
         const tasksWithoutDeletedOne = tasks.filter(task => {
+           
             return task != taskToDelete;
         })
 
         setTasks(tasksWithoutDeletedOne);
+
     }
 
     return(
@@ -57,6 +58,28 @@ export function Tasklist() {
 
             <section className={styles.taskList}>
 
+                <div>
+                    <p>Tarefas criadas <span>
+                        
+                    { 
+                        tasks.length
+                    }
+                    </span></p>
+                    <p>Concluídas 
+                    <span> 
+
+                    {
+                        
+                    } 
+
+                    <> de </>
+                 
+                    {
+                        tasks.length 
+                    } 
+                    </span></p>
+                </div>
+
                 {
                         tasks.map(task => {
                             return (
@@ -64,6 +87,7 @@ export function Tasklist() {
                                     key={task}
                                     title={task}
                                     onDeleteTask={deleteTask}
+                                    onCompleted={completeTask}
                                 />
                             )
                         })

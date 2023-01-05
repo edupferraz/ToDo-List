@@ -7,20 +7,21 @@ import styles from './Task.module.css';
 interface TaskProps {
     title: string;
     onDeleteTask: (task: string) => void;
+    onCompleteTask: (task: string) => void;
 }
 
-export function Task ({title, onDeleteTask}: TaskProps) {
+export function Task ({title, onDeleteTask, onCompleteTask}: TaskProps) {
 
     const [complete, setComplete] = useState(false);
 
     function handleCompleteTask(){
         setComplete(!complete);
+        onCompleteTask()
     }
 
     function handleDeleteTask() {
         onDeleteTask(title);
     }
-
 
     return(
         <section className={styles.task}>
@@ -31,7 +32,8 @@ export function Task ({title, onDeleteTask}: TaskProps) {
                     ? (
                         <li>
                             <div>
-                                <input type="checkbox" checked={complete} onChange={handleCompleteTask}/>
+                                <label htmlFor="task"></label>
+                                <input type="checkbox" checked={complete} onChange={handleCompleteTask} name="task"/>
                                 <p>{title}</p>
                             </div>
 
