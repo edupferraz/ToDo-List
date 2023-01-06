@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { BiPlusCircle } from "react-icons/bi";
 import { EmptyList } from "./EmptyList";
 import { Task } from "./Task";
@@ -10,6 +10,8 @@ export function Tasklist() {
     const [tasks, setTasks] = useState([
         'Arrumar a casa'
     ])
+
+    const [taskCompleted, setTaskCompleted] = useState([]);
 
     const [newTask, setNewTask] = useState();
 
@@ -39,7 +41,22 @@ export function Tasklist() {
 
     }
 
-    return(
+    function completeTask(taskToComplete: string) {
+    
+        setTaskCompleted([...taskCompleted, taskToComplete])
+
+    }
+
+    function uncompleteTask(taskToUncomplete: string) {
+        const tasksWithoutUncompleteOne = tasks.filter(task => {
+           
+            return task != taskToUncomplete;
+        })
+
+        setTaskCompleted(tasksWithoutUncompleteOne);
+    }
+
+    return( 
 
         <div>
             <section className={styles.inputSearch}>
@@ -55,7 +72,7 @@ export function Tasklist() {
                     <button type="submit" onClick={handleAddTask}>Criar <BiPlusCircle size={18}/> </button>
                 </div>
             </section>
-
+            
             <section className={styles.taskList}>
 
                 <div>
@@ -69,25 +86,29 @@ export function Tasklist() {
                     <span> 
 
                     {
-                        
+                        taskCompleted.length 
                     } 
 
                     <> de </>
                  
                     {
-                        tasks.length 
+                        tasks.length
                     } 
                     </span></p>
                 </div>
 
                 {
+                    tasks.length == 0 ? <EmptyList></EmptyList>  :
+                        
                         tasks.map(task => {
                             return (
                                 <Task
                                     key={task}
                                     title={task}
                                     onDeleteTask={deleteTask}
-                                    onCompleted={completeTask}
+                                    onCompleteTask={completeTask}
+                                    onUncompleteTask={uncompleteTask}
+
                                 />
                             )
                         })

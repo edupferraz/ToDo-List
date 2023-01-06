@@ -8,15 +8,21 @@ interface TaskProps {
     title: string;
     onDeleteTask: (task: string) => void;
     onCompleteTask: (task: string) => void;
+    onUncompleteTask: (task: string) => void;
 }
 
-export function Task ({title, onDeleteTask, onCompleteTask}: TaskProps) {
+export function Task ({title, onDeleteTask, onCompleteTask, onUncompleteTask}: TaskProps) {
 
     const [complete, setComplete] = useState(false);
 
     function handleCompleteTask(){
         setComplete(!complete);
-        onCompleteTask()
+
+        if(complete == false) {
+            onCompleteTask(title);
+        } else {
+            onUncompleteTask(title)
+        }
     }
 
     function handleDeleteTask() {
