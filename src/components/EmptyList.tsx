@@ -7,7 +7,6 @@ export function EmptyList() {
     return(
         <section className={styles.emptyList}>            
 
-
             <main>
                     <FiClipboard size={56} color="#808080"/>
                     <p>Você ainda não tem tarefas cadastradas</p>
